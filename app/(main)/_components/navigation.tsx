@@ -213,7 +213,7 @@ export const Navigation = () => {
     </>
   );
 };
-function then(arg0: any) {
-  throw new Error("Function not implemented.");
-}
+// function then (arg0: any) {
+//   throw new Error("Function not implemented.");
+// }
 

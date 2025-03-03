@@ -1,5 +1,5 @@
 "use client";
-type Usable<T> = T | Promise<T>;
+// type Usable<T> = T | Promise<T>;
 import { useMutation, useQuery } from "convex/react";
 import dynamic from "next/dynamic";
 import { useMemo } from "react";

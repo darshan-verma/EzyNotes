@@ -3,7 +3,7 @@ import { BlockNoteEditor, PartialBlock } from "@blocknote/core";
 import "@blocknote/core/fonts/inter.css";
 import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/mantine/style.css";
-import { useCreateBlockNote, useEditorChange } from "@blocknote/react";
+import { useCreateBlockNote } from "@blocknote/react";
 import { useEdgeStore } from "@/lib/edgestore";
 import { useTheme } from "next-themes";
 import { useCallback } from "react";
