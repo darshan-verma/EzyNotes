@@ -9,7 +9,7 @@ import {
   Settings,
   Trash,
 } from "lucide-react";
-import { ElementRef, useEffect, useRef, useState } from "react";
+import { ElementRef, useCallback, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -42,19 +42,10 @@ export const Navigation = () => {
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
 
-  useEffect(() => {
-    if (isMobile) {
-      collapse();
-    } else {
-      resetWidth();
-    }
-  }, [isMobile]);
+ 
 
-  useEffect(() => {
-    if (isMobile) {
-      collapse();
-    }
-  }, [pathname, isMobile]);
+  
+  
 
   const handleMouseDown = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -84,22 +75,37 @@ export const Navigation = () => {
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseup", handleMouseUp);
   };
-  const resetWidth = () => {
+  // const resetWidth = () => {
+  //   if (sidebarRef.current && navbarRef.current) {
+  //     setIsCollapsed(false);
+  //     setIsResetting(true);
+
+  //     sidebarRef.current.style.width = isMobile ? "100%" : "240px";
+  //     navbarRef.current.style.setProperty(
+  //       "width",
+  //       isMobile ? "0" : "calc(100% - 240px"
+  //     );
+  //     navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
+  //     setTimeout(() => setIsResetting(false), 300);
+  //   }
+  // };
+
+  const resetWidth = useCallback(() => {
     if (sidebarRef.current && navbarRef.current) {
       setIsCollapsed(false);
       setIsResetting(true);
-
+  
       sidebarRef.current.style.width = isMobile ? "100%" : "240px";
       navbarRef.current.style.setProperty(
         "width",
-        isMobile ? "0" : "calc(100% - 240px"
+        isMobile ? "0" : "calc(100% - 240px)"
       );
       navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
       setTimeout(() => setIsResetting(false), 300);
     }
-  };
+  }, [isMobile, sidebarRef, navbarRef]);
 
-  const collapse = () => {
+  const collapse = useCallback(() => {
     if (sidebarRef.current && navbarRef.current) {
       setIsCollapsed(true);
       setIsResetting(true);
@@ -109,7 +115,7 @@ export const Navigation = () => {
       navbarRef.current.style.setProperty("left", "0");
       setTimeout(() => setIsResetting(false), 300);
     }
-  };
+  }, [])
 
   const handleCreate = () => {
     const promise = create({ title: "Untitled" })
@@ -120,6 +126,28 @@ export const Navigation = () => {
       error: "Failed to create a new note",
     });
   };
+  // useEffect(() => {
+  //   if (isMobile) {
+  //     collapse();
+  //   } else {
+  //     resetWidth();
+  //   }
+  // }, [isMobile, resetWidth]);
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    } else {
+      resetWidth();
+    }
+  }, [isMobile, resetWidth, collapse]);
+
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    }
+  }, [pathname, isMobile, collapse]);
+
+
 
   return (
     <>

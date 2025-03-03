@@ -43,10 +43,11 @@ export const SearchCommand = () => {
   },[toggle]);
 
 
-  const onSelect = ( id: string)=>{
-    router.push(`/documents/${id}`);
-    onClose();
-  }
+  // const onSelect = ( id: string)=>{
+  //   router.push(`/documents/${id}`);
+  //   onClose();
+  // }
+
 
   if (!isMounted) {
     return null;
