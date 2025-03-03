@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "overrides": {
-    "cmdk": {
-      "react": "^19.0.0"
-    }
+  "cmdk": {
+    "react": "^19.0.0"
   },
+  "@radix-ui/react-dialog": {
+    "react": "^19.0.0"
+  }
+},
   "dependencies": {
     "@blocknote/core": "^0.24.2",
     "@blocknote/mantine": "^0.24.2",
