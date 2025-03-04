@@ -16,6 +16,7 @@ import {
 
 import { useSearch } from "@/hooks/use-search";
 import { api } from "@/convex/_generated/api";
+import * as React from "react";
 
 export const SearchCommand = () => {
   const { user } = useUser();
@@ -47,7 +48,7 @@ export const SearchCommand = () => {
   //   router.push(`/documents/${id}`);
   //   onClose();
   // }
-
+ 
 
   if (!isMounted) {
     return null;
