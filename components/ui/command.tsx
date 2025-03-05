@@ -43,7 +43,7 @@ export interface CommandInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "value"> {
   value?: string;
 }
- 
+
 // Update CommandInput to use the new props type.
 const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
   ({ className, ...props }, ref) => (
@@ -94,7 +94,10 @@ CommandEmpty.displayName = CommandPrimitive.Empty.displayName
 
 const CommandGroup = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Group>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group> & {
+    children?: React.ReactNode;
+    heading?: React.ReactNode;
+  }
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.Group
     ref={ref}
