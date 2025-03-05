@@ -56,7 +56,7 @@ export const SearchCommand = () => {
   return (
     <CommandDialog open={isOpen} onOpenChange={onClose}>
       <CommandInput placeholder={`Search ${user?.fullName}'s EzyNotes...`} />
-      {/* <CommandList>
+      <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Documents">
             {documents?.map((document)=>(
@@ -83,7 +83,7 @@ export const SearchCommand = () => {
                 </CommandItem>
             ))}
         </CommandGroup>
-      </CommandList> */}
+      </CommandList>
     </CommandDialog>
   );
 };
