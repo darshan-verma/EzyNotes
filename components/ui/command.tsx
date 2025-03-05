@@ -79,7 +79,9 @@ CommandList.displayName = CommandPrimitive.List.displayName
 
 const CommandEmpty = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Empty>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty> & {
+    children?: React.ReactNode
+  }
 >((props, ref) => (
   <CommandPrimitive.Empty
     ref={ref}
